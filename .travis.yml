@@ -22,7 +22,7 @@ script:
 # - ./node_modules/bithound/bin/bithound check git@github.com:mrnz/vin-ver2.git
 - grunt templates
 - grunt unit-travis
-# - grunt build
+- grunt build
 - grunt e2e-travis
 # - if [ "$TRAVIS_BRANCH" == "master" ]; then grunt ftp_push --ftpUser=$USERNAME --ftpPass=$PASSWORD; fi
 env:
