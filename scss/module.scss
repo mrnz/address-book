@@ -118,11 +118,6 @@
 
 }
 
-
-
-
-
-
 .form{
   width: 100%;
   padding: 20px;
@@ -135,6 +130,13 @@
     clear: both;
     display: block;
   }
+
+  > .form-title{
+    font-weight: 700;
+    font-size: 30px;
+    padding: 10px 10px 30px 10px;
+  }
+
   > .form-element {
     margin-bottom: 20px;
     box-sizing: border-box;

@@ -18,12 +18,12 @@ module.exports = function () {
 
   this.Then(/^Open app$/,{timeout: 20000},  function (next) {
    
-    browser.get(baseURL+'www/').then(function () {
+    browser.get(baseURL+'www/build/').then(function () {
       
       browser.waitForAngular();
 
       browser.getCurrentUrl().then(function(currentUrl){
-     		expect( currentUrl ).to.be.equal(baseURL+'www/#/fulllist');
+     		expect( currentUrl ).to.be.equal(baseURL+'www/build/#/fulllist');
      		next();
       });
 

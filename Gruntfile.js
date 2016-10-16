@@ -17,6 +17,24 @@ module.exports = function(grunt){
 		  }
 		},
 
+		copy: {
+			index: {
+				files: [
+					{	expand: true, src: ['www/index.build.html'], dest: buildTarget, flatten: true, rename: function(dest, src) { return  dest+"/index.html"; }, filter: 'isFile'	}
+				]
+			}
+		},
+
+	  concat_css: {
+	    options: {
+	      // Task-specific options go here. 
+	    },
+	    all: {
+	      src: ["./www/build/css/temp/*.css"],
+	      dest: "./www/build/css/styles.css"
+	    },
+	  },
+
 		karma: {
     	unit: {
     		configFile: 'karma.conf.js'
@@ -55,33 +73,76 @@ module.exports = function(grunt){
 	  },
 
 	  sass: {
-	    dist: {
+	    dev: {
 	      options: {
 	        style: 'expanded',
 	        sourcemap: 'none',
-	        update: true
+	        update: false
 	      },
 	      files: {
 	        './www/css/base.css': './scss/base.scss',
 	        './www/css/layout.css': './scss/layout.scss',
 	        './www/css/module.css': './scss/module.scss',
-	        './www/css/state.css': './scss/state.scss',
+	        './www/css/transitions.css': './scss/transitions.scss',
 	      }
-	    }
+	    },
+			dist: {
+	      options: {
+	        style: 'compressed',
+	        sourcemap: 'none',
+	        update: false
+	      },
+	      files: {
+	        './www/build/css/temp/base.css': './scss/base.scss',
+	        './www/build/css/temp/layout.css': './scss/layout.scss',
+	        './www/build/css/temp/module.css': './scss/module.scss',
+	        './www/build/css/temp/transitions.css': './scss/transitions.scss',
+	      }
+	    }	    
 	  },
 
-
+		shell: {
+	    options: {
+	      stderr: false
+	    },
+	    target: {
+	      command: 'r.js -o www/js/main.build.js'
+	    },
+	    deleteCss: {
+				command: function() {
+	    		var fs = require('fs');
+	    		try{
+	    			fs.statSync(__dirname+'/'+buildTarget).isDirectory();
+	    			return 'rm -R '+buildTarget+'/css/temp';
+	    		}catch(err){
+	    			return '';
+	    		}
+	    	}	    	
+	    },
+	    deleteOldBuild: {
+	    	command: function() {
+	    		console.log(__dirname+'/'+buildTarget);
+	    		var fs = require('fs');
+	    		try{
+	    			fs.statSync(__dirname+'/'+buildTarget).isDirectory();
+	    			return 'rm -R '+buildTarget;
+	    		}catch(err){
+	    			return '';
+	    		}
+	    	}
+	    }
+	  },
 
     watch: {
       scss: {
         files: ['./scss/*.scss'],
-        tasks: ['sass:dist'],
+        tasks: ['sass:dev'],
         options: {
           spawn: false,
         },
       },
       templates: {
-      	files: ['./www/templates/**/*.html'],
+      	files: ['./www/templates/js/**/*.html'],
         tasks: ['templates'],
         options: {
           spawn: false,
@@ -94,8 +155,11 @@ module.exports = function(grunt){
 	});
 	
 	/* LOAD TASKS */
-  grunt.loadNpmTasks('grunt-angular-templates');
+	grunt.loadNpmTasks('grunt-shell');
+	grunt.loadNpmTasks('grunt-concat-css');
 	grunt.loadNpmTasks('grunt-contrib-connect');
+	grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-angular-templates');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-karma');
@@ -108,6 +172,8 @@ module.exports = function(grunt){
 	grunt.registerTask('unit-local', ["karma:unit"]);
 	grunt.registerTask('unit-travis', ["karma:travis"]);	
 	
+	grunt.registerTask('build', ["shell:deleteOldBuild", "templates", "sass:dist", "shell:target", "copy:index", "concat_css:all", "shell:deleteCss"]);
+
 	grunt.registerTask('templates', ['ngtemplates']);
   grunt.registerTask('default', ['watch']);
 
