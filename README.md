@@ -25,8 +25,30 @@ Tools I used:
 
 First clone the repository to your local disk:
 
-```git clone https://github.com/mrnz/address-book.git```
+```git clone https://github.com/mrnz/adventofcode.git```
 
 Once the repository has been cloned, you may install all necessary dependencies with this command:
 
 ``` npm install ```
+
+Then: 
+
+``` npm run update ```
+
+to update protractor drivers
+
+It might be also nessesary to install sass 
+
+## Tests
+
+To perform unit tests type: 
+
+``` npm test ```
+
+To perform end to end tests first build project: 
+
+``` npm run build ```
+
+and then type: 
+
+``` npm run e2e ```
