@@ -1,0 +1,20 @@
+<div class="view" id="listview">
+	
+	<div class="list">
+	
+		<div class="contact"
+			ng-repeat="item in list | orderBy: 'firstname'" 
+			ng-click="editContact(item.id)">
+			<div class="contact-icon">{{item.firstname[0]}}</div>
+			<div class="contact-content">
+				<div title="Name" class="contact-detail contact-detail-name">{{item.firstname}} {{item.lastname}}</div>
+				<div title="E-mail" class="contact-detail contact-detail-email">{{item.email}}</div>
+				<div title="Country" class="contact-detail contact-detail-country">{{item.country}}</div>
+			</div>
+		</div>
+		
+		<div id="addcontact" class="btn btn-info btn-addcontact contact" ng-click="addNewContact()">Add new contact</div>	
+
+	</div>
+
+</div>

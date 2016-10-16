@@ -1,0 +1,191 @@
+@import "_variablesAndMixins";
+
+/* Contact module */
+.contact{
+  float: left;
+	box-sizing: border-box;
+	position: relative;
+	height: 150px;
+	padding:10px;
+	border: 1px solid $divider-color;
+	cursor: pointer;
+	background: #fff;
+	color: $primary-text-color;
+  
+  @include respond-to(wee) { width: 100% ;}
+  @include respond-to(wide) {
+    width: 50% ;
+    &:nth-child(2n+1):nth-last-child(1) {
+      width: 100%;
+    }
+  }
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}n+1) .contact-icon{
+      background: adjust_hue( $accent-color, ( ( $i - 1) *36) );
+    }
+  }
+
+
+  
+  > .contact-icon {
+    float: left;
+    height: 60px;
+    width: 60px;
+    margin-top: 30px;
+    margin-left: 25px;
+    line-height: 60px;
+    border-radius: 140px;
+    font-size: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    color: $primary-color-text;
+  }  
+
+  
+  > .contact-content {
+    position: relative;
+    margin-left: 60px;
+
+    > .contact-detail  {
+      padding: 6px 40px 6px 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: $secondary-text-color;
+      text-align: center;
+
+      &.contact-detail-name{
+        padding-top: 20px;
+        font-size: 20px;
+        text-transform: capitalize;
+        color: $primary-text-color;
+      }      
+    }
+
+  }
+
+}
+
+/* Button module */
+.btn{
+  text-align: center;
+  display: inline-block;
+  padding: 20px 30px;
+  border-radius: 1px;
+  border-style: solid;
+  cursor: pointer;
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  transition: background-color 300ms ease-out;
+  transition: color 300ms ease-out;
+  &.btn-info{
+    background-color: $primary-color;
+    border-color: $primary-color-dark;
+    color: $primary-color-text;
+    &:hover{
+      background-color: $hover-color;
+    }      
+  }
+  
+  &.btn-danger{
+    background-color: #f04124;
+    border-color: #cf2a0e;
+    color: $primary-color-text;
+    &:hover{
+      background-color: #cf2a0e;
+    }      
+  }  
+  &.btn-success{
+    background-color: #43AC6A;
+    border-color: #368a55;
+    color: $primary-color-text;
+    &:hover{
+      background-color: #368a55;
+    } 
+    &[disabled]{
+      background: lighten(#43AC6A, 20%) !important;
+      border: 2px solid lighten(#43AC6A, 20%);
+      cursor: not-allowed;
+    }     
+  }    
+
+  &.btn-addcontact{
+    float: left;
+    text-transform: uppercase;
+    color: white;
+    line-height: 100px;
+    font-size: 24px;
+  }  
+
+}
+
+
+
+
+
+
+.form{
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  color: #212121; 
+  background: #fff;
+  border-radius: 5px;   
+  &::after{
+    content: " ";
+    clear: both;
+    display: block;
+  }
+  > .form-element {
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    float: left;
+    @include respond-to(wee) { width: 100%; }    
+    &.label{
+      font-weight: 700;
+      @include respond-to(wee) { margin-bottom: 0px;}    
+      @include respond-to(wide) { width: 30%; }      
+    }   
+    &.input{
+      @include respond-to(wide) { width: 70%; }      
+    }       
+  }
+  .form-element-btn{
+    @include respond-to(wee) { 
+      float: left;
+      width: 100%;
+    }
+  }
+  .form-element-lastinput{
+    margin-bottom: 50px;
+  }
+  
+}
+
+
+
+
+
+
+.input{
+  display: block;
+  width: 100%;
+  padding: 10px 15px; 
+  font-size: 1rem;
+  line-height: 1.25;
+  color: #55595c;
+  background-color: #fff;
+  background-image: none;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 3px;
+  padding-right: 30px;
+  background-repeat: no-repeat;
+  background-position: center right .625rem;
+  -webkit-background-size: 1.25rem 1.25rem;
+  background-size: 1.25rem 1.25rem;    
+}
+.label{
+  padding: 12px 15px; 
+  
+}

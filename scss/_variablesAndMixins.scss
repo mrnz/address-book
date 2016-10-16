@@ -1,0 +1,21 @@
+$primary-color-dark:   #303F9F;
+$primary-color:        #3F51B5;
+$primary-color-light:  #C5CAE9;
+$primary-color-text:   #FFFFFF;
+$accent-color:         #4CAF50;
+$primary-text-color:   #212121;
+$secondary-text-color: #757575;
+$divider-color:        #BDBDBD;
+$hover-color:          #007095;
+
+$break-point: 720px;
+
+@mixin respond-to($media) {
+  @if $media == wee {
+    @media only all and (max-width: $break-point) { @content; }
+  }
+  @else if $media == wide{
+    @media only all and (min-width: $break-point + 1) { @content; }
+  }
+  
+}

@@ -1,0 +1,64 @@
+<form class="form" class="" name="addContact" ng-submit="submit()">
+  
+  <h1>{{title}}</h1>  
+
+	<label class="label form-element" for="firstname">First name</label>
+	<input id="firstname" 
+    class="input form-element" 
+  	type="text"
+  	name="firstname" 
+  	placeholder="First name..." 
+  	ng-model="fields.firstname"
+    ng-change="submitValidation()" 
+    ng-minlength="3"
+    ng-maxlength="20"
+    ng-class="{'has-error': !addContact.firstname.$valid && !addContact.firstname.$pristine }"
+    required>
+
+	<label class="label form-element" for="lastname">Last name</label>
+	<input id="lastname" 
+    class="form-element input" 
+  	type="text"
+  	name="lastname" 
+  	placeholder="Last name..." 
+  	ng-model="fields.lastname"
+    ng-change="submitValidation()" 
+    ng-minlength="3"
+    ng-maxlength="20"
+    ng-class="{'has-error': !addContact.lastname.$valid && !addContact.lastname.$pristine }"
+    required>
+
+	<label class="label form-element" for="email">E-mail</label>
+	<input id="email"
+    class="input form-element" 
+  	type="text"
+  	name="email" 
+  	placeholder="E-mail..." 
+  	ng-model="fields.email" 
+    ng-change="submitValidation()" 
+  	ng-pattern="emailpattern"
+    ng-class="{'has-error': !addContact.email.$valid && !addContact.email.$pristine }"
+	  required>
+
+	<label class="label form-element" for="country">Country</label>
+  <select id="country" 
+    class="input form-element form-element-lastinput" 
+		name="country" 
+		ng-model="fields.country"
+    ng-change="submitValidation()" 
+		ng-options="country for country in countries"
+		required>
+	</select>                 
+
+
+
+  <button id="gohome" class="btn btn-info form-element-btn" type="button" ng-click="goHome()"> < Go back </button>
+
+  <button id="submit" class="btn btn-success form-element-btn" type="submit" ng-disabled="!isValid">
+    <span ng-if="isThisEditForm">Save changes</span>
+    <span ng-if="!isThisEditForm">Add contact</span>
+  </button>
+  
+  <button id="delete" class="btn btn-danger float-right form-element-btn" type="button" ng-if="isThisEditForm" ng-click="deleteContect()">Delete contact</button>
+
+</form>

@@ -1,0 +1,50 @@
+@import "_variablesAndMixins";
+
+body{
+	background: #f5f5f5;
+	background: #413E5D;
+	color: $primary-color-text;
+  position: absolute;
+  width: 100%;
+}
+
+.float-left{
+  float: left;
+}
+.float-right{
+  float: right;
+}
+
+.app{
+	position: relative;
+	@include respond-to(wee) { 
+		width: 100%; 
+		padding: 10px;
+    box-sizing: border-box;
+    margin: 80px auto 20px;
+	}
+  @include respond-to(wide) { 
+    width: $break-point; 
+    margin: 120px auto 20px;
+  }
+  :after{
+    display: block;
+    content: " ";
+    clear: both;
+  }
+  .app-title{
+    width: 100%;
+    font-size: 100px;
+    font-weight: 100;
+    text-align: center;
+    font-variant: small-caps;
+    position: absolute;
+    top: -120px;
+    @include respond-to(wee) {
+      font-size: 42px;
+      padding: 0 0 30px 0;
+      top: -60px;
+      left: 0px;
+    }
+  }  
+}
