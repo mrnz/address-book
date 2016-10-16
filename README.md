@@ -1,11 +1,16 @@
-
 # Address book - The JavaScript Challenge
+
 [![Build Status](https://img.shields.io/travis/mrnz/address-book.svg?maxAge=1&style=flat-square)](https://api.travis-ci.org/mrnz/address-book.svg?branch=master)
 
 ## Description
 
-Tools I used: 
+Bearing in mind that:  
 
+> Note, this is where you get to shine — show us what you’ve got!
+
+I decided to use the tools which I know best. 
+
+Tools I used: 
 * Angular
 * Node
 * RequireJS
@@ -14,6 +19,7 @@ Tools I used:
 * Karma
 * Protractor
 * Cucumber
+* Travis-CI
 
 ## Installation
 

@@ -4,7 +4,10 @@
   "description": "javascript challenge",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test":"./node_modules/.bin/grunt unit-local",
+    "update":"./node_modules/protractor/bin/webdriver-manager update --standalone",
+    "e2e": "./node_modules/.bin/grunt e2e-local",
+    "build": "./node_modules/.bin/grunt build"
   },
   "repository": {
     "type": "git",
