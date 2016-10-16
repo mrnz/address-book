@@ -150,20 +150,6 @@ module.exports = function(grunt){
       }
     },
 
-		ftp_push: {
-	    your_target: {
-	      options: {
-        	username: grunt.option('ftpUser'),
-          password: grunt.option('ftpPass'),
-	    		host: "gdziejestvin.home.pl",
-	    		dest: "/public_html/address-book"
-	      },
-	      files: [
-	        {expand: true, cwd: 'www/build', src: ["**/*"] }
-	      ]
-	    }
-	  },
-
 	});
 	
 	/* LOAD TASKS */
@@ -175,8 +161,7 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-karma');
-  grunt.loadNpmTasks('grunt-protractor-runner');
-  grunt.loadNpmTasks('grunt-ftp-push');  
+  grunt.loadNpmTasks('grunt-protractor-runner'); 
 
 	/* TASKS DEFINITIONS */
 	grunt.registerTask('e2e-local', ["protractor:e2e_local"]);
