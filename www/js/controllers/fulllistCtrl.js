@@ -6,7 +6,7 @@ define(['countriesList'], function(countriesList) {
 		$scope.list = dataFactory.getContacts();
 
 		$scope.editContact = function(itemId) {
-			$state.go('edit', { itemId } );
+			$state.go('edit', { itemId: itemId } );
 		};
 		
 		$scope.addNewContact = function() {
