@@ -18,9 +18,9 @@ define([ 'angularMocks', 'editItemCtrl'], function(mocks, editItemCtrl) {
       dataFactory = _dataFactory_;
       
       dependency = { 
-        $scope, 
-        $stateParams, 
-        dataFactory, 
+        $scope: $scope, 
+        $stateParams: $stateParams, 
+        dataFactory: dataFactory, 
       };
 
       spyOn( dataFactory, 'getContact').and.returnValue( testData );

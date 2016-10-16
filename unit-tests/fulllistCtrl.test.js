@@ -23,9 +23,9 @@ define([ 'angularMocks', 'fulllistCtrl' ], function( mocks, fulllistCtrl) {
       dataFactory = _dataFactory_;
       
       dependency = {
-        $scope, 
-        $state, 
-        dataFactory
+        $scope: $scope, 
+        $state: $state, 
+        dataFactory: dataFactory
       };
       
       spyOn( dataFactory, 'getContacts').and.returnValue( testData );
