@@ -1,6 +1,6 @@
 # Address book - The JavaScript Challenge
 
-[![Build Status](https://img.shields.io/travis/mrnz/address-book.svg?maxAge=1&style=flat-square)](https://api.travis-ci.org/mrnz/address-book.svg?branch=master)
+[![Build Status](https://img.shields.io/travis/mrnz/address-book.svg?maxAge=1&style=flat-square)](https://travis-ci.org/mrnz/address-book)
 
 ## Description
 
