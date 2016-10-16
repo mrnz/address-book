@@ -47,5 +47,6 @@
 	out: '../build/js/main.js',
 	include: ['main'],
 	insertRequire: ['main'],
+	optimize: "none",
 	wrap: true
 });

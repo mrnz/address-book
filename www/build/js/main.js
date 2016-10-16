@@ -45057,7 +45057,7 @@ define('templates',[],function() { function run($templateCache) {  'use strict';
   $templateCache.put('templates/editAddForm.html',
     "<form class=\"form\" class=\"\" name=\"addContact\" ng-submit=\"submit()\">\n" +
     "  \n" +
-    "  <h1>{{title}}</h1>  \n" +
+    "  <h1 class=\"form-title\">{{title}}</h1>  \n" +
     "\n" +
     "	<label class=\"label form-element\" for=\"firstname\">First name</label>\n" +
     "	<input id=\"firstname\" \n" +
