@@ -1,4 +1,6 @@
 language: node_js
+addons:
+  firefox: "43.0"
 node_js:
 - '5.6'
 before_install:
@@ -12,6 +14,10 @@ before_script:
 - ./node_modules/protractor/bin/webdriver-manager update --standalone --firefox
 - ./node_modules/protractor/bin/webdriver-manager start 2>&1 &
 - sleep 3
+- echo "Extracting firefox and setting PATH variable..."
+- tar -xjf /tmp/firefox-43.0.tar.bz2 --directory /tmp
+- export PATH="/tmp/firefox:$PATH"
+- echo "Using firefox version `firefox --version`"
 script:
 # - ./node_modules/bithound/bin/bithound check git@github.com:mrnz/vin-ver2.git
 - grunt templates
