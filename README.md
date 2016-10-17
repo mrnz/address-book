@@ -52,3 +52,9 @@ To perform end to end tests first build project:
 and then type: 
 
 ``` npm run e2e ```
+
+## Start app
+
+To start application type: 
+
+``` npm start ```
