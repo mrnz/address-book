@@ -142,7 +142,7 @@ module.exports = function(grunt){
         },
       },
       templates: {
-      	files: ['./www/templates/js/**/*.html'],
+      	files: ['./www/templates/**/*.html'],
         tasks: ['templates'],
         options: {
           spawn: false,
