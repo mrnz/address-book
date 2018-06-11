@@ -23,7 +23,7 @@ module.exports = function () {
       browser.waitForAngular();
 
       browser.getCurrentUrl().then(function(currentUrl){
-     		expect( currentUrl ).to.be.equal(baseURL+'www/build/#/fulllist');
+     		expect( currentUrl ).to.be.equal(baseURL+'www/build/#!/fulllist');
      		next();
       });
 
